@@ -3,7 +3,6 @@ public:
     int n, m;
     int gx, gy;
     int sx, sy;
-    
     int validCells = 0;
     int visitedCells = 0;
     
@@ -19,12 +18,10 @@ public:
         if (y < 0 || y >= m) {
             return false;
         }
-        
         // obstacle validation
         if (g[x][y] == -1) {
             return false;
         }
-        
         // visited validation
         if (vis[x][y]) {
             return false;
@@ -34,7 +31,6 @@ public:
     int dfs(int x, int y) {    
         vis[x][y] = true;
         visitedCells++;
-    
         // goal is reached
         if (gx == x && gy == y) {
             if (visitedCells == validCells) {
@@ -47,7 +43,8 @@ public:
                 return 0;
             }
         }
-    
+        
+        // goal is not yet reached
         int res = 0;    
         for (auto m : moves) {
             int nx = x + m[0];
@@ -63,17 +60,13 @@ public:
     }
     
     int uniquePathsIII(vector<vector<int>>& grid) {
-        
         n = grid.size();
         m = grid[0].size();
-        
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++) {
-                
                 if (grid[i][j] != -1) {
                     validCells++;
                 }
-                
                 if (grid[i][j] == 2) {
                     gx = i;
                     gy = j;
@@ -84,7 +77,6 @@ public:
                 }
             }
         }
-        
         vis.resize(n, vector<bool>(m, false));
         g = grid;
         
