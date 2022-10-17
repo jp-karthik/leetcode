@@ -8,7 +8,7 @@ public:
         vector<vector<int>> dp(n + 1, vector<int>(sum + 1));
         dp[0][0] = true;
         for (int i = 1; i <= n; i++) {
-            dp[i][0] = false;
+            dp[i][0] = true;
         }
         for (int j = 1; j <= sum; j++) {
             dp[0][j] = false;
