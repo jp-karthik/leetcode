@@ -16,17 +16,15 @@ public:
             return 0;
         }    
         int res = 0;
+        for (auto c : a[i]) {
+            m[c - 'a']++;
+        }
         if (isValid(a[i])) {
-            for (auto c : a[i]) {
-                m[c - 'a']++;
-            }  
-            if (isValid(a[i])) {
-                int op1 = backtrack(a, i + 1) + a[i].length();
-                res = max(res, op1);
-            }
-            for (auto c : a[i]) {
-                m[c - 'a']--;
-            }
+            int op1 = backtrack(a, i + 1) + a[i].length();
+            res = max(res, op1); 
+        }
+        for (auto c : a[i]) {
+            m[c - 'a']--;
         }
         int op2 = backtrack(a, i + 1);
         res = max(res, op2);
