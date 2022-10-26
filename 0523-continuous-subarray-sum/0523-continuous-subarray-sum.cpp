@@ -16,7 +16,6 @@ public:
             }
         }
       
-        
         unordered_map<int, vector<int>> m;
         
         for (int i = 0; i < n; i++) {
