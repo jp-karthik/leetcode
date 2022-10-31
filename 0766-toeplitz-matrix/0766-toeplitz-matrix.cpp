@@ -11,10 +11,12 @@ public:
             while (cx < n && cy < m) {
                 if (matrix[cx][cy] != matrix[cx - 1][cy - 1]) {
                     b = false;
+                    break;
                 }
                 cx++;
                 cy++;
             }
+            if (!b) break;
         }
         for (int i = 0; i < m; i++) {
             pair<int, int> start = {0, i};
@@ -23,10 +25,12 @@ public:
             while (cx < n && cy < m) {
                 if (matrix[cx][cy] != matrix[cx - 1][cy - 1]) {
                     b = false;
+                    break;
                 }
                 cx++;
                 cy++;
             }
+            if (!b) break;
         }
         return b;
     }
