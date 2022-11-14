@@ -6,7 +6,7 @@ public:
     int dfs(int u) {
         vis[u] = true;
         int curr = 0;
-        for (auto v : g[u]) {
+        for (int v : g[u]) {
             if (!vis[v]) {
                 curr += dfs(v);
             }
@@ -38,9 +38,6 @@ public:
                 res += dfs(i) - 1;
             }
         }
-        
-        g.clear();
-        vis.clear();
         
         return res;
     }
