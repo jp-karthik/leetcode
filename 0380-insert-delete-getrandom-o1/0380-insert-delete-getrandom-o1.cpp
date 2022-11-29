@@ -19,13 +19,14 @@ public:
     
     bool remove(int val) {
         if (m.find(val) == m.end()) return false;
-        int last = v.back();
+        
         int idx = m[val];
-        m[last] = idx;
-        v[idx] = last;
+        m[v.back()] = idx;
+        v[idx] = v.back();
         v.pop_back();
         m.erase(val);
         return true;
+        
     }
     
     int getRandom() {
