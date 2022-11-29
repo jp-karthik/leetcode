@@ -5,7 +5,6 @@ public:
     unordered_map<int, int> m;
 
     RandomizedSet() {
-        
     }
     
     bool insert(int val) {
@@ -21,8 +20,9 @@ public:
     bool remove(int val) {
         if (m.find(val) == m.end()) return false;
         int last = v.back();
-        m[last] = m[val];
-        v[m[val]] = last;
+        int idx = m[val];
+        m[last] = idx;
+        v[idx] = last;
         v.pop_back();
         m.erase(val);
         return true;
