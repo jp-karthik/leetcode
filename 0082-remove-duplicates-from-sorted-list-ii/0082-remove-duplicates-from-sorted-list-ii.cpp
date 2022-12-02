@@ -11,29 +11,49 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        map<int, int> m;
         ListNode* T = head;
+        ListNode* P = NULL;
+        bool trigger = false;
+        
         while (T) {
-            m[T->val]++;
-            T = T->next;
-        }
-        head = NULL;
-        ListNode* tail = NULL;
-        for (auto p : m) {
-            if (p.second == 1) {
-                ListNode* temp = new ListNode;
-                temp->val = p.first;
-                if (head == NULL && tail == NULL) {
-                    head = temp;
-                    tail = temp;
-                    head->next = NULL;
+            if (T->next) {
+                if (T->val == T->next->val) {
+                    trigger = true;
+                    T->next = T->next->next;
                 } else {
-                    tail->next = temp;
-                    temp->next = NULL;
-                    tail = temp;
+                    if (trigger) {
+                        if (P == NULL) {
+                            T = T->next;
+                            head = T;
+                            trigger = false;
+                        } else {
+                            P->next = T->next;
+                            T = T->next;
+                            trigger =false;  
+                        }
+                    } else {
+                        P = T;
+                        T = T->next;
+                    }
+                }
+            } else {
+                if (trigger) {
+                    if (P == NULL) {
+                        T = T->next;
+                        head = T;
+                        trigger = false;
+                    } else {
+                        P->next = T->next;
+                        T = T->next;
+                        trigger = false;
+                    }                      
+                } else {
+                    P = T;
+                    T = T->next;   
                 }
             }
         }
+        
         return head;
     }
 };
