@@ -31,7 +31,6 @@ public:
         }
     }
     int sumNumbers(TreeNode* root) {
-        res = 0;
         helper(root, "");
         return res;
     }
