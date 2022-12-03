@@ -16,24 +16,21 @@ public:
         if (!node->left && !node->right) return true;
         else return false;
     }
-    void helper(TreeNode* root, string soFar) {
-        if (root) {
-            if (isLeaf(root)) {
-                soFar += (char) (root->val + 48);
-                res += stoi(soFar);
-                return;
-            }
+    void helper(TreeNode* root, string soFar) { 
+        if (isLeaf(root)) {
             soFar += (char) (root->val + 48);
-            if (root->left) {
-                helper(root->left, soFar);
-            }
-            if (root->right) {
-                helper(root->right, soFar);
-            }
+            res += stoi(soFar);
+            return;
+        }
+        soFar += (char) (root->val + 48);
+        if (root->left) {
+            helper(root->left, soFar);
+        }
+        if (root->right) {
+            helper(root->right, soFar);
         }
     }
     int sumNumbers(TreeNode* root) {
-        res = 0;
         helper(root, "");
         return res;
     }
