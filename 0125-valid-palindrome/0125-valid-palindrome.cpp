@@ -12,8 +12,13 @@ public:
             }
         }
         int n = x.length();
-        for (int i = 0; i < n / 2;  i++) {
-            if (x[i] != x[n - 1 - i]) {
+        int l = 0;
+        int r = n - 1;
+        while (l < r) {
+            if (x[l] == x[r]) {
+                l++;
+                r--;
+            } else {
                 return false;
             }
         }
